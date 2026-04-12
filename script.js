@@ -6,6 +6,11 @@ const careers = [
     period: "2024.07 - 현재",
     summary:
       "글로벌 민간 우주항공 고객사 기준의 HR/GA/보안 체계를 구축하고, 핵심 인재 확보 및 KPI 기반 운영으로 사업 성장에 기여.",
+    facts: [
+      { label: "업종", value: "전자소재·부품 제조, 우주항공용 소재·부품 공급" },
+      { label: "임직원", value: "60명" },
+      { label: "매출", value: "420억원 (2025년)" },
+    ],
     tags: ["HR Strategy", "GA", "ISO27001", "AI Tooling"],
     details: [
       "글로벌 Top-tier 고객사 컴플라이언스 기준에 맞춘 HR/GA/보안 운영 체계 수립",
@@ -22,6 +27,10 @@ const careers = [
     period: "2022.12 - 2024.07",
     summary:
       "합병 이후 조직 안정화와 Squad 조직 운영을 리드하고, 조직문화 개발/리더십 프로그램/노무 이슈 대응을 통합 수행.",
+    facts: [
+      { label: "업종", value: "CJ ENM 계열 미디어제작·제공, 모바일 OTT(IT·개발)" },
+      { label: "임직원", value: "230명" },
+    ],
     tags: ["M&A", "PMI", "Org Design", "Culture"],
     details: [
       "TVING-kt seezn 합병 이후 조직/인원 밀접 관리로 적격합병 요건 유지 및 조직 안정화",
@@ -38,6 +47,10 @@ const careers = [
     period: "2022.01 - 2022.12",
     summary:
       "법인 분사 직후 HR 및 총무 체계를 제로베이스로 수립하고 TVING과의 합병 실사 및 PMI를 성공적으로 추진.",
+    facts: [
+      { label: "업종", value: "미디어제작·제공, 모바일 OTT(IT·개발) (kt 자회사)" },
+      { label: "임직원", value: "85명 (TVING 합병 시점)" },
+    ],
     tags: ["HR Setup", "HRIS", "Labor", "Governance"],
     details: [
       "분사 신설 법인 HR/총무 체계를 Zero-base에서 구축(평가/보상/승진/교육 포함)",
@@ -54,6 +67,10 @@ const careers = [
     period: "2016.06 - 2022.01",
     summary:
       "창립 멤버로 조직 확장(최대 320명), 평가/보상 체계, 투자 및 경영관리 전반을 리드하며 성장과 위기 국면 모두를 경험.",
+    facts: [
+      { label: "업종", value: "미생물 기반 바이오시밀러 제조업" },
+      { label: "임직원", value: "최대 320명(2020년)" },
+    ],
     tags: ["Scale-up", "Compensation", "IR", "Crisis 대응"],
     details: [
       "창립 멤버로 합류해 최대 4개 계열사, 320명 규모까지 조직/인력 확충",
@@ -70,6 +87,11 @@ const careers = [
     period: "2010.01 - 2016.05",
     summary:
       "인력 운영, 채용, 평가·보상, 조직진단 및 교육체계 운영 등 대기업 HRM의 핵심 실무를 폭넓게 수행.",
+    facts: [
+      { label: "업종", value: "전기전자부품 제조 (LED, 카메라모듈, 차량용 장치, 기판소재 등)" },
+      { label: "임직원", value: "13,000명 (2016년 기준)" },
+      { label: "매출", value: "약 13조원 (2016년 기준)" },
+    ],
     tags: ["HRM", "Recruiting", "Performance", "L&D"],
     details: [
       "채용 브랜딩, 산학 연계 프로그램, 인턴십 운영 등 채용 체계 고도화",
@@ -94,7 +116,21 @@ function renderCareerList() {
           <h3>${item.company} | ${item.role}</h3>
           <span class="caret" aria-hidden="true">+</span>
         </button>
-        <p>${item.summary}</p>
+        <p class="experience-summary">${item.summary}</p>
+        ${
+          item.facts?.length
+            ? `<dl class="experience-facts" aria-label="회사 개요">
+          ${item.facts
+            .map(
+              (f) => `<div class="experience-fact">
+            <dt>${f.label}</dt>
+            <dd>${f.value}</dd>
+          </div>`
+            )
+            .join("")}
+        </dl>`
+            : ""
+        }
         <div class="chips">
           ${item.tags.map((tag) => `<span>${tag}</span>`).join("")}
         </div>
