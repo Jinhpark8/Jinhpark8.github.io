@@ -11,7 +11,7 @@ const careers = [
       { label: "임직원", value: "60명" },
       { label: "매출", value: "420억원 (2025년)" },
     ],
-    tags: ["HR Strategy", "GA", "ISO27001", "AI Tooling"],
+    tags: ["HR Strategy", "GA", "ISO27001"],
     details: [
       "글로벌 Top-tier 고객사 컴플라이언스 기준에 맞춘 HR/GA/보안 운영 체계 수립",
       "6개월간 조직 인원 Double-up(30명 → 60명) 및 1년 이내 이탈률 10% 이하 관리",
@@ -114,7 +114,10 @@ function renderCareerList() {
         <p class="meta">${item.period}</p>
         <button class="experience-trigger" type="button" aria-expanded="false" aria-controls="detail-${item.id}">
           <h3>${item.company} | ${item.role}</h3>
-          <span class="caret" aria-hidden="true">+</span>
+          <span class="trigger-right">
+            <span class="more-info" aria-hidden="true">more info</span>
+            <span class="caret" aria-hidden="true">+</span>
+          </span>
         </button>
         <p class="experience-summary">${item.summary}</p>
         ${
